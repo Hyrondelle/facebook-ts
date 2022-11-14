@@ -1,6 +1,6 @@
 import Post from '../models/posts.js'
 
-exports.createPost = (req, res, next) => {
+const createPost = (req, res, next) => {
   const post = new Post({
     title: req.body.title,
     date:req.body.date
@@ -19,3 +19,4 @@ exports.createPost = (req, res, next) => {
     }
   );
 };
+export default {createPost}

@@ -1,6 +1,6 @@
 import  express  from "express";
 import mongoose from 'mongoose';
-import Post from './models/posts.js'
+import PostRoutes from './routes/posts.js'
 
 mongoose.connect('mongodb+srv://toto:6I1CKlAs1HI9akuv@clone.xrknh2m.mongodb.net/test',
   { useNewUrlParser: true,
@@ -17,5 +17,7 @@ app.use((req, res, next) => {
     res.setHeader('Access-Control-Allow-Methods', 'GET, POST, PUT, DELETE, PATCH, OPTIONS');
     next();
   });
+
+  app.use('/', PostRoutes);
 
 export default app;

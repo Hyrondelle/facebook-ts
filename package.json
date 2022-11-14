@@ -25,5 +25,17 @@
     "@vitejs/plugin-react": "^2.2.0",
     "typescript": "^4.6.4",
     "vite": "^3.2.0"
-  }
+  },
+  "main": "index.js",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Hyrondelle/facebook-ts.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Hyrondelle/facebook-ts/issues"
+  },
+  "homepage": "https://github.com/Hyrondelle/facebook-ts#readme",
+  "description": ""
 }

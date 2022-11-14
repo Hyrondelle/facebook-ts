@@ -1,4 +1,5 @@
-import {BrowserRouter as Router, Routes,Route,Link} from "react-dom"
+import {BrowserRouter as Router, Routes,Route,Link} from "react-router-dom";
+import Home from "./components/Home";
 function App() {
   
 
@@ -10,9 +11,8 @@ function App() {
         
       </nav>
       <Routes>
-        <Route path="fb-ts/" element={<Home isAuth={isAuth}/>}/>
-        <Route path="fb-ts/" element={<Login setIsAuth={setIsAuth}/>}/>
-        <Route path="fb-ts/" element={<CreatePost isAuth={isAuth}/>}/>
+        <Route path="fb-ts/" element={<Home/>}/>
+        
       </Routes>
     </Router>
   )

@@ -19,4 +19,19 @@ const createPost = (req, res, next) => {
     }
   );
 };
-export default {createPost}
+
+const getPosts = (req, res, next) => {
+  Post.find().then(
+    (posts) => {
+      res.status(201).json(posts);
+    }
+  ).catch(
+    (error) => {
+      res.status(400).json({
+        error: error
+      });
+    }
+  );
+};
+
+export default {createPost,getPosts}

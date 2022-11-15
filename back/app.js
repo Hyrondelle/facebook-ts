@@ -1,8 +1,12 @@
 import  express  from "express";
 import mongoose from 'mongoose';
 import PostRoutes from './routes/posts.js'
+import * as dotenv from 'dotenv';
+dotenv.config()
 
-mongoose.connect('mongodb+srv://toto:6I1CKlAs1HI9akuv@clone.xrknh2m.mongodb.net/test',
+const mdp = process.env.MDP
+
+mongoose.connect('mongodb+srv://toto:'+mdp+'@clone.xrknh2m.mongodb.net/test',
   { useNewUrlParser: true,
    useUnifiedTopology: true })
   .then(() => console.log('Connexion à MongoDB réussie !'))

@@ -3,6 +3,7 @@ import axios from 'axios';
 
 const Home = () => {
     const [post,setPost] = useState<string>('post');
+    const [listPost,setListPost] = useState<Array<any>>([]);
     
     const Submit = async() =>{
         const postObj = {title:post}
@@ -12,7 +13,9 @@ const Home = () => {
     }
     useEffect(()=>{
         axios.get('http://localhost:3000/posts')
-        .then((res)=>console.log(res))
+        .then((res)=>{console.log(res)
+           setListPost(res.data) 
+        })
         .catch((e)=>console.log(e))
     },[])
     return (
@@ -21,6 +24,12 @@ const Home = () => {
             <label htmlFor="post">message:</label>
             <input onChange={(e)=>setPost(e.target.value)} type="text" name="post" id="post" />
             <button onClick={Submit} type="submit">Envoyer</button>
+            
+            <ul className='posts'>
+                {
+                    listPost.map((post)=><li>{post.title}</li>)
+                }
+            </ul>
         </div>
     );
 };

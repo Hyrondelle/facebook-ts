@@ -1,11 +1,12 @@
 import React from 'react';
 
-const post = () => {
+const Post = (props:any) => {
     return (
         <div className='post'>
+            <p>{props.post.title}</p>
             
         </div>
     );
 };
 
-export default post;
+export default Post;

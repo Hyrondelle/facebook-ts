@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
+import Post from './Post';
 
 const Home = () => {
     const [post,setPost] = useState<string>('post');
@@ -27,7 +28,7 @@ const Home = () => {
             
             <ul className='posts'>
                 {
-                    listPost.map((post)=><li>{post.title}</li>)
+                    listPost.map((post)=><Post post={post} key={post._id}/>)
                 }
             </ul>
         </div>

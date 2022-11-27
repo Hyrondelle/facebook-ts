@@ -1,6 +1,7 @@
 import  express  from "express";
 import mongoose from 'mongoose';
-import PostRoutes from './routes/posts.js'
+import PostRoutes from './routes/posts.js';
+import authRoutes from './routes/users';
 import * as dotenv from 'dotenv';
 dotenv.config()
 
@@ -23,5 +24,6 @@ app.use((req, res, next) => {
   });
 
   app.use('/', PostRoutes);
+  app.use('/', authRoutes);
 
 export default app;

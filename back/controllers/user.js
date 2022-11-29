@@ -29,14 +29,28 @@ const signup = (req, res, next) =>{
 };
 
 const login = (req, res, next) =>{
-    User.findOne(req.body.email)
+    User.findOne({email:req.body.email})
     .then((user)=>{
+      if(!user){
+        return res.status(401).json({message:'paire email/password incorrecte'})
+      }
       bcrypt.compare(req.body.password,user.password)
-      .then(()=>console.log('user trouvé'))
-      .catch(() =>res.status(401).console.log('paire email/password incorrecte'))
+      .then((valid)=>{
+        if(!valid){
+          return res.status(401).json({message:'paire email/password incorrecte'})
+        }
+        else{
+          res.status(201).json({
+            userId:user._id,
+            userName:user.name,
+            token:'TOKEN'
+          })
+        }
+      })
+      .catch((error) =>res.status(500).json({error}))
     })
     .catch((error) => {
-      res.status(400).json({
+      res.status(500).json({
         message: error
       });
     })

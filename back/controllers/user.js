@@ -1,5 +1,6 @@
 import bcrypt from 'bcrypt';
 import User from '../models/users.js';
+import jwt from 'jsonwebtoken';
 
 
 const signup = (req, res, next) =>{
@@ -43,7 +44,11 @@ const login = (req, res, next) =>{
           res.status(201).json({
             userId:user._id,
             userName:user.name,
-            token:'TOKEN'
+            token:jwt.sign(
+              {userId:user._id},
+              'random token',
+              {expiresIn:'24h'}
+            )
           })
         }
       })

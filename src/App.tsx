@@ -1,17 +1,19 @@
 import {BrowserRouter as Router, Routes,Route,Link} from "react-router-dom";
-import Home from "./components/Home";
+import Connection from "./pages/connection";
+import Home from "./pages/Home";
 function App() {
   
 
   return (
     <Router>
       <nav>
-        <Link to="fb-ts/">Home</Link>
+        <Link to="/home">Home</Link>
         
         
       </nav>
       <Routes>
-        <Route path="fb-ts/" element={<Home/>}/>
+        <Route path="/" element={<Connection/>}/>
+        <Route path="/home" element={<Home/>}/>
         
       </Routes>
     </Router>

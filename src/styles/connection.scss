@@ -1,0 +1,33 @@
+.connection{
+    
+    .container{
+        height: 100vh;
+        display: flex;
+        .trait{
+            width: 1px;
+            background-color: black;
+        }
+        .signup{
+            display: flex;
+            width: 50%;
+            align-items: center;
+            justify-content: center;
+            form{
+                display: flex;
+                flex-direction: column;
+                width: 20%;
+            }
+        }
+        .login{
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 50%;
+            form{
+                display: flex;
+                flex-direction: column;
+                width: 20%;
+            }
+        }
+    }
+}

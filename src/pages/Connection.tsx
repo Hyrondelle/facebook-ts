@@ -5,7 +5,9 @@ const Connection = () => {
         <div className='connection'>
             <div className='container'>
                 <div className='signup'>
+                <h1>Inscription</h1>
                     <form >
+                        
                         <label htmlFor="email">Email:</label>
                         <input type="text" name="email" id="email" />
                         <label htmlFor="mdp">Mot de passe:</label>
@@ -18,6 +20,7 @@ const Connection = () => {
 
                 </div>
                 <div className='login'>
+                <h1>connection</h1>
                 <form >
                         <label htmlFor="email">Email:</label>
                         <input type="text" name="email" id="email" />

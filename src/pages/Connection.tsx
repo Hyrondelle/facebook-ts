@@ -4,37 +4,44 @@ import { useNavigate } from 'react-router-dom';
 
 const Connection = () => {
     const [email,setEmail] = useState<string>('');
+    const [name,setName] = useState<string>('');
     const [password,setPassword] = useState<string>('');
     const [verif,setVerif] = useState<string>('');
-    const [choice,setChoice] = useState<string>('login');
     const navigate = useNavigate();
 
-    const MakeChoiceLogin = () =>{
-        setChoice('login')
-    }
-    const MakeChoiceSignup = () =>{
-        setChoice('signup')
-    }
-    const Submit = async() =>{
+    const SubmitLogin = async() =>{
         const authtObj = {email,password}
-        await axios.post('http://localhost:3000/'+choice,authtObj)
+        await axios.post('http://localhost:3000/login',authtObj)
         .then((res)=>{console.log(res)
         navigate("/home")})
         .catch((e)=>console.log(e))
+    }
+    const SubmitSignup = async() =>{
+        if(password===verif){
+            const authtObj = {name,email,password}
+            await axios.post('http://localhost:3000/signup',authtObj)
+            .then((res)=>{console.log(res)
+            navigate("/home")})
+            .catch((e)=>console.log(e))
+        }
+        else{return console.log('verifiction password incorrecte');
+        }
     }
     return (
         <div className='connection'>
             <div className='container'>
                 <div className='signup'>
                     <h1>Inscription</h1>
-                    <form >       
+                    <form >  
+                        <label htmlFor="name">Name:</label>
+                        <input onChange={(e)=>setName(e.target.value)} type="text" name="name" id="name" />     
                         <label htmlFor="email">Email:</label>
                         <input onChange={(e)=>setEmail(e.target.value)} type="text" name="email" id="email" />
                         <label htmlFor="mdp">Mot de passe:</label>
                         <input onChange={(e)=>setPassword(e.target.value)} type="text" name="mdp" id="mdp" />
                         <label htmlFor="confirm">confirmer:</label>
                         <input onChange={(e)=>setVerif(e.target.value)} type="text" name="confirm" id="confirm" />
-                        <input onClick={()=>{Submit; MakeChoiceSignup}} className='envoyer' type="button" value="Valider" />
+                        <input onClick={SubmitSignup} className='envoyer' type="button" value="Valider" />
                     </form>
                 </div>
                 <div className='trait'>
@@ -47,7 +54,7 @@ const Connection = () => {
                         <input onChange={(e)=>setEmail(e.target.value)} type="text" name="email" id="email" />
                         <label htmlFor="mdp">Mot de passe:</label>
                         <input onChange={(e)=>setPassword(e.target.value)} type="text" name="mdp" id="mdp" />
-                        <input onClick={()=>{MakeChoiceLogin(); Submit()}} className='envoyer' type="button" value="Valider" />
+                        <input onClick={SubmitLogin} className='envoyer' type="button" value="Valider" />
                     </form>
                 </div>
             </div>

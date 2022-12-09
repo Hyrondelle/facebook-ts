@@ -1,7 +1,8 @@
 import bcrypt from 'bcrypt';
 import User from '../models/users.js';
 import jwt from 'jsonwebtoken';
-
+import * as dotenv from 'dotenv';
+dotenv.config()
 
 const signup = (req, res, next) =>{
     bcrypt.hash(req.body.password,10)
@@ -30,6 +31,7 @@ const signup = (req, res, next) =>{
 };
 
 const login = (req, res, next) =>{
+  const TOKEN = 'shdhg14744gqqzqkk741l6gh4hd4gdrhh14d4d4g5j4j4d4g4ji6i7ddgfgg'
     User.findOne({email:req.body.email})
     .then((user)=>{
       if(!user){
@@ -46,7 +48,7 @@ const login = (req, res, next) =>{
             userName:user.name,
             token:jwt.sign(
               {userId:user._id},
-              'random token',
+              'TOKEN',
               {expiresIn:'24h'}
             )
           })

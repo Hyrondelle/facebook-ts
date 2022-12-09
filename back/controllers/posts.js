@@ -3,6 +3,7 @@ import Post from '../models/posts.js'
 const createPost = (req, res, next) => {
   const post = new Post({
     title: req.body.title,
+    userId:req.auth,
     date:req.body.date
   });
   post.save().then(

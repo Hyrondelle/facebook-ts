@@ -7,7 +7,7 @@ const Home = () => {
     const [listPost,setListPost] = useState<Array<any>>([]);
     
     const Submit = async() =>{
-        const postObj = {title:post}
+        const postObj = {message:post,userId:localStorage.getItem('userId')}
         await axios.post('http://localhost:3000/post',postObj)
         .then((res)=>console.log(res))
         .catch((e)=>console.log(e))
@@ -18,7 +18,7 @@ const Home = () => {
            setListPost(res.data) 
         })
         .catch((e)=>console.log(e))
-    },[])
+    },[listPost])
     return (
         <div className='home'>
             <h1>coucou</h1>

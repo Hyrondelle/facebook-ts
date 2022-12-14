@@ -12,8 +12,11 @@ const Connection = () => {
     const SubmitLogin = async() =>{
         const authtObj = {email,password}
         await axios.post('http://localhost:3000/login',authtObj)
-        .then((res)=>{console.log(res)
-        navigate("/home")})
+        .then((res)=>{
+            console.log(res)
+            navigate("/home")
+            localStorage.setItem('userId',res.data.userId)
+        })
         .catch((e)=>console.log(e))
     }
     const SubmitSignup = async() =>{

@@ -1,9 +1,9 @@
-import Post from '../models/posts.js'
+import Post from '../models/posts.js';
 
 const createPost = (req, res, next) => {
   const post = new Post({
-    title: req.body.title,
-    userId:req.auth,
+    message: req.body.message,
+    userId:req.body.userId,
     date:req.body.date
   });
   post.save().then(

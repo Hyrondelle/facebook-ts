@@ -3,7 +3,7 @@ import axios from 'axios';
 import Post from '../components/Post';
 
 const Home = () => {
-    const [post,setPost] = useState<string>('post');
+    const [post,setPost] = useState<string>('');
     const [listPost,setListPost] = useState<Array<any>>([]);
     
     const Submit = async() =>{
@@ -18,7 +18,7 @@ const Home = () => {
            setListPost(res.data) 
         })
         .catch((e)=>console.log(e))
-    },[listPost])
+    },[post])
     return (
         <div className='home'>
             <h1>coucou</h1>

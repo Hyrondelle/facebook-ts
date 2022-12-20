@@ -35,4 +35,10 @@ const getPosts = (req, res, next) => {
   );
 };
 
-export default {createPost,getPosts}
+const updatePost = (req, res, next) =>{
+  Post.updateOne({ _id: req.params.id }, { ...req.body, _id: req.params.id })
+  .then(() => res.status(200).json({ message: 'Objet modifié !'}))
+  .catch(error => res.status(400).json({ error }))
+}
+
+export default {createPost,getPosts, updatePost}

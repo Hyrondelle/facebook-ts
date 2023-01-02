@@ -1,14 +1,14 @@
 .post{
-    background-color: antiquewhite;
+    background-color: rgb(169, 166, 163);
     width: 500px;
     height: 200px;
-    margin: 20px auto;
+    margin: 40px auto;
     color: black;
     border-radius: 25px;
     box-shadow: rgba(0, 0, 0, 0.16) 0px 10px 36px 0px, rgba(0, 0, 0, 0.06) 0px 0px 0px 1px;;
     .post-contain{
         height: 80%;
-        padding: 5px;
+        padding: 8px;
     }
     .social{
         background-color: white;
@@ -41,4 +41,10 @@
             align-items: center;
         }
     }
+    .modify{
+        cursor: pointer;
+        width: 20px;
+
+    }
+    
 }

@@ -1,9 +1,11 @@
 import React from 'react';
 
-const Update = () => {
+const Update = (props:any) => {
+    
     return (
         <div className='update'>
-            hggggghhhhhhhhhhhhhh
+            
+            <input autoFocus type="text" name="update" id="update" defaultValue={props.affichePost}/>
         </div>
     );
 };

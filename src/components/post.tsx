@@ -28,7 +28,7 @@ const Post = (props:any) => {
                     <div className='comment btn centre'>comment</div>
                     <div className='partage btn centre'>partage</div>
                     <button onClick={modify} className='modify'><FaPen/></button>
-                    {click?<Update/>:<div></div>}
+                    {click?<Update affichePost={affichePost}/>:<div></div>}
                 </div>
             </div>
         </div>

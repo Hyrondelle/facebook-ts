@@ -1,12 +1,11 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import {FaPen} from 'react-icons/fa';
-import Update from './Update';
 
 const Post = (props:any) => {
-    const [click,setClick] = useState<boolean>(false);
+    const [click,setClick] = useState<boolean>();
     const affichePost = props.post.message
+    
     const modify = () =>{
-        console.log('click');
         setClick(true);
     }
 
@@ -28,11 +27,32 @@ const Post = (props:any) => {
                     <div className='comment btn centre'>comment</div>
                     <div className='partage btn centre'>partage</div>
                     <button onClick={modify} className='modify'><FaPen/></button>
-                    {click &&<Update affichePost={affichePost}/>}
+                    {click &&<Update affichePost={affichePost}/>}   
                 </div>
             </div>
         </div>
     );
 };
 
+const Update = (props:any) => {
+    const updateElement = document.getElementById('updateEl');
+    const toggleStyleBtn = () =>{
+        updateElement?.remove();
+        
+    }
+    
+     return (
+         <div className='update' id='updateEl'>
+             
+             <input autoFocus type="text" name="update" id="update" defaultValue={props.affichePost}/>
+             <button onClick={toggleStyleBtn}>X</button>
+         </div>
+     );
+ };
+ 
 export default Post;
+
+     
+     
+
+ 

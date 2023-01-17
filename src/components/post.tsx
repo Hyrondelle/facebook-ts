@@ -1,8 +1,9 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, createContext,useContext } from 'react';
 import {FaPen} from 'react-icons/fa';
-
+import Update from './Update';
+export const ClickContext = createContext({});
 const Post = (props:any) => {
-    const [click,setClick] = useState<boolean>();
+    const [click,setClick] = useState<boolean>(false);
     const affichePost = props.post.message
     
     const modify = () =>{
@@ -11,6 +12,7 @@ const Post = (props:any) => {
 
     return (
         <div className='post'>
+            <ClickContext.Provider value={{click,setClick}}>
             <div className='post-contain'>
                 <p>{affichePost}</p>
             </div>
@@ -30,25 +32,12 @@ const Post = (props:any) => {
                     {click &&<Update affichePost={affichePost}/>}   
                 </div>
             </div>
+            </ClickContext.Provider>
         </div>
     );
 };
 
-const Update = (props:any) => {
-    const updateElement = document.getElementById('updateEl');
-    const toggleStyleBtn = () =>{
-        updateElement?.remove();
-        
-    }
-    
-     return (
-         <div className='update' id='updateEl'>
-             
-             <input autoFocus type="text" name="update" id="update" defaultValue={props.affichePost}/>
-             <button onClick={toggleStyleBtn}>X</button>
-         </div>
-     );
- };
+
  
 export default Post;
 

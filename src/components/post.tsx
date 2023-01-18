@@ -1,9 +1,14 @@
-import React, { useState, createContext,useContext } from 'react';
+
+import React, { useState, createContext,useContext, Dispatch } from 'react';
 import {FaPen} from 'react-icons/fa';
 import Update from './Update';
 export const ClickContext = createContext({});
+type clickContextType ={
+    click:boolean;
+    setClick:Dispatch<boolean>;
+}
 const Post = (props:any) => {
-    const [click,setClick] = useState<boolean>(false);
+    const [click,setClick] = useState<boolean|clickContextType>(false);
     const affichePost = props.post.message
     
     const modify = () =>{

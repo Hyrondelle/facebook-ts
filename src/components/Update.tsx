@@ -2,11 +2,10 @@ import React, { useState,useContext } from 'react';
 import{ClickContext} from './Post';
 
 const Update = (props:any) => {
-    const {click,setClick} = useContext(ClickContext);
-    const updateElement = document.getElementById('updateEl');
+    const click:any = useContext(ClickContext);
+    
     const toggleStyleBtn = () =>{
-        updateElement?.remove();
-        
+        click.setClick(false);
     }
     
      return (

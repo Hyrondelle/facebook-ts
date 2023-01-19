@@ -9,7 +9,8 @@ type clickContextType ={
 }
 const Post = (props:any) => {
     const [click,setClick] = useState<boolean|clickContextType>(false);
-    const affichePost = props.post.message
+    const messagePost = props.post.message
+    const fullPost = props.post
     
     const modify = () =>{
         setClick(true);
@@ -19,7 +20,7 @@ const Post = (props:any) => {
         <div className='post'>
             <ClickContext.Provider value={{click,setClick}}>
             <div className='post-contain'>
-                <p>{affichePost}</p>
+                <p>{messagePost}</p>
             </div>
             <div className="social">
                 <div className="total">
@@ -34,7 +35,7 @@ const Post = (props:any) => {
                     <div className='comment btn centre'>comment</div>
                     <div className='partage btn centre'>partage</div>
                     <button onClick={modify} className='modify'><FaPen/></button>
-                    {click &&<Update affichePost={affichePost}/>}   
+                    {click &&<Update fullPost={fullPost}/>}   
                 </div>
             </div>
             </ClickContext.Provider>

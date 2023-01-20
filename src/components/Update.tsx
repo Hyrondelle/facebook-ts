@@ -14,8 +14,7 @@ const Update = (props:any) => {
     const submitChange = async() =>{
         const idPost = props.fullPost._id
         Post.message = post;
-        const updateConfig ={Post,idPost}
-        await axios.put('http://localhost:3000/updateposts/'+idPost,updateConfig)
+        await axios.put('http://localhost:3000/updateposts/'+idPost,Post)
         .then((res)=>console.log(res))
         .catch((e)=>console.log(e))
     }

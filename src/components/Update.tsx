@@ -18,11 +18,19 @@ const Update = (props:any) => {
         .then((res)=>console.log(res))
         .catch((e)=>console.log(e))
     }
+    const deletePost = async() =>{
+        const idPost = props.fullPost._id
+        Post.message = post;
+        await axios.delete('http://localhost:3000/delete/'+idPost)
+        .then((res)=>console.log(res))
+        .catch((e)=>console.log(e))
+    }
      return (
          <div className='update' id='updateEl'>
              
              <input onChange={(e)=>setPost(e.target.value)} autoFocus type="text" name="update" id="update" defaultValue={props.fullPost.message}/>
              <button onClick={submitChange} type="submit">modifier</button>
+             <button onClick={deletePost} type="submit">supprimer</button>
              <button onClick={toggleStyleBtn}>X</button>
          </div>
      );

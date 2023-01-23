@@ -7,5 +7,6 @@ import postCtrl from '../controllers/posts.js';
 router.post('/post', postCtrl.createPost);
 router.get('/posts', postCtrl.getPosts);
 router.put('/updateposts/:id', postCtrl.updatePost);
+router.delete('/delete/:id', postCtrl.deletePost);
 
 export default router;

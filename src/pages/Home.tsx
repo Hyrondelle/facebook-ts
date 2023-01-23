@@ -4,12 +4,15 @@ import Post from '../components/Post';
 
 const Home = () => {
     const [post,setPost] = useState<string>('');
+    const [nbPosts,setNbPosts] = useState<number>(0);
     const [listPost,setListPost] = useState<Array<any>>([]);
     
     const Submit = async() =>{
         const postObj = {message:post,userId:localStorage.getItem('userId')}
         await axios.post('http://localhost:3000/post',postObj)
-        .then((res)=>console.log(res))
+        .then((res)=>{
+            setNbPosts(nbPosts+1)
+        })
         .catch((e)=>console.log(e))
     }
     useEffect(()=>{
@@ -18,7 +21,7 @@ const Home = () => {
            setListPost(res.data) 
         })
         .catch((e)=>console.log(e))
-    },[post])
+    },[nbPosts])
     return (
         <div className='home'>
             <h1>coucou</h1>

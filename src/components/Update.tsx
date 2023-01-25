@@ -8,7 +8,6 @@ const Update = (props:any) => {
     const nbPosts:any = useContext(nbPostsContext);
     const [post,setPost] = useState<string>();
     const Post = props.fullPost;
-    console.log(Post);
     
     const toggleStyleBtn = () =>{
         click.setClick(false);
@@ -17,7 +16,7 @@ const Update = (props:any) => {
         const idPost = props.fullPost._id
         Post.message = post;
         await axios.put('http://localhost:3000/updateposts/'+idPost,Post)
-        .then((res)=>console.log(res))
+        .then((res)=>click.setClick(false))
         .catch((e)=>console.log(e))
     }
     const deletePost = async() =>{

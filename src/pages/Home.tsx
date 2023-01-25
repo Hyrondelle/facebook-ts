@@ -1,17 +1,21 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState,createContext,Dispatch } from 'react';
 import axios from 'axios';
 import Post from '../components/Post';
-
+export const nbPostsContext = createContext({});
+type nbPosteContextType ={
+    nbPosts:number;
+    setNbPosts:Dispatch<number>;
+    }
 const Home = () => {
     const [post,setPost] = useState<string>('');
-    const [nbPosts,setNbPosts] = useState<number>(0);
+    const [nbPosts,setNbPosts] = useState<number|nbPosteContextType>(0);
     const [listPost,setListPost] = useState<Array<any>>([]);
     
     const Submit = async() =>{
         const postObj = {message:post,userId:localStorage.getItem('userId')}
         await axios.post('http://localhost:3000/post',postObj)
         .then((res)=>{
-            setNbPosts(nbPosts+1)
+            setNbPosts(+1)
         })
         .catch((e)=>console.log(e))
     }
@@ -24,6 +28,7 @@ const Home = () => {
     },[nbPosts])
     return (
         <div className='home'>
+            <nbPostsContext.Provider value={{nbPosts,setNbPosts}}>
             <h1>coucou</h1>
             <label htmlFor="post">message:</label>
             <input onChange={(e)=>setPost(e.target.value)} type="text" name="post" id="post" />
@@ -34,6 +39,7 @@ const Home = () => {
                     listPost.map((post)=><Post post={post} key={post._id}/>)
                 }
             </ul>
+            </nbPostsContext.Provider>
         </div>
     );
 };

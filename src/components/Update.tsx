@@ -1,9 +1,11 @@
 import axios from 'axios';
 import React, { useState,useContext } from 'react';
 import{ClickContext} from './Post';
+import { nbPostsContext } from '../pages/Home';
 
 const Update = (props:any) => {
     const click:any = useContext(ClickContext);
+    const nbPosts:any = useContext(nbPostsContext);
     const [post,setPost] = useState<string>();
     const Post = props.fullPost;
     console.log(Post);
@@ -22,7 +24,7 @@ const Update = (props:any) => {
         const idPost = props.fullPost._id
         Post.message = post;
         await axios.delete('http://localhost:3000/delete/'+idPost)
-        .then((res)=>console.log(res))
+        .then((res)=>nbPosts.setNbPosts(-1))
         .catch((e)=>console.log(e))
     }
      return (

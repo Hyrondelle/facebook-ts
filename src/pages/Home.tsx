@@ -13,14 +13,14 @@ const Home = () => {
     
     const Submit = async() =>{
         const postObj = {message:post,userId:localStorage.getItem('userId')}
-        await axios.post('http://localhost:3000/post',postObj)
+        await axios.post('http://localhost:3000/api/post',postObj)
         .then((res)=>{
             setNbPosts(+1)
         })
         .catch((e)=>console.log(e))
     }
     useEffect(()=>{
-        axios.get('http://localhost:3000/posts')
+        axios.get('http://localhost:3000/api/post')
         .then((res)=>{console.log(res)
            setListPost(res.data) 
         })

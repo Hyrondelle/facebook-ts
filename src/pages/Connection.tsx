@@ -4,14 +4,14 @@ import { useNavigate } from 'react-router-dom';
 
 const Connection = () => {
     const [email,setEmail] = useState<string>('');
-    const [name,setName] = useState<string>('');
+    const [pseudo,setPseudo] = useState<string>('');
     const [password,setPassword] = useState<string>('');
     const [verif,setVerif] = useState<string>('');
     const navigate = useNavigate();
 
     const SubmitLogin = async() =>{
         const authtObj = {email,password}
-        await axios.post('http://localhost:3000/login',authtObj)
+        await axios.post('http://localhost:3000/api/user/login',authtObj)
         .then((res)=>{
             console.log(res)
             navigate("/home")
@@ -21,8 +21,8 @@ const Connection = () => {
     }
     const SubmitSignup = async() =>{
         if(password===verif){
-            const authtObj = {name,email,password}
-            await axios.post('http://localhost:3000/signup',authtObj)
+            const authtObj = {pseudo,email,password}
+            await axios.post('http://localhost:3000/api/user/register',authtObj)
             .then((res)=>{console.log(res)
             navigate("/home")})
             .catch((e)=>console.log(e))
@@ -36,8 +36,8 @@ const Connection = () => {
                 <div className='signup'>
                     <h1>Inscription</h1>
                     <form >  
-                        <label htmlFor="name">Name:</label>
-                        <input onChange={(e)=>setName(e.target.value)} type="text" name="name" id="name" />     
+                        <label htmlFor="name">Pseudo:</label>
+                        <input onChange={(e)=>setPseudo(e.target.value)} type="text" name="name" id="name" />     
                         <label htmlFor="email">Email:</label>
                         <input onChange={(e)=>setEmail(e.target.value)} type="text" name="email" id="email" />
                         <label htmlFor="mdp">Mot de passe:</label>

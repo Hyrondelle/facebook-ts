@@ -1,3 +1,4 @@
+/* eslint-disable no-undef */
 import mongoose from "mongoose";
 import * as dotenv from 'dotenv';
 dotenv.config()

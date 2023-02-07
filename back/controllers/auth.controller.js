@@ -1,3 +1,4 @@
+/* eslint-disable no-undef */
 import UserModel from '../models/user.model.js';
 import jwt from 'jsonwebtoken';
 import { signUpErrors, signInErrors } from '../utils/errors.utils.js';

@@ -10,8 +10,8 @@ const Connection = () => {
     const navigate = useNavigate();
 
     const SubmitLogin = async() =>{
-        const authtObj = {email,password}
-        await axios.post('http://localhost:3000/api/user/login',authtObj)
+        const data = {email,password}
+        await axios.post('http://localhost:5173/api/user/login',data)
         .then((res)=>{
             console.log(res)
             navigate("/home")
@@ -21,8 +21,8 @@ const Connection = () => {
     }
     const SubmitSignup = async() =>{
         if(password===verif){
-            const authtObj = {pseudo,email,password}
-            await axios.post('http://localhost:3000/api/user/register',authtObj)
+            const data = {pseudo,email,password}
+            await axios.post('http://localhost:5173/api/user/register',data)
             .then((res)=>{console.log(res)
             navigate("/home")})
             .catch((e)=>console.log(e))

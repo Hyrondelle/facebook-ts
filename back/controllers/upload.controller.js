@@ -1,3 +1,4 @@
+/* eslint-disable no-undef */
 import UserModel from "../models/user.model.js";
 import fs  from "fs";
 import { promisify } from "util";

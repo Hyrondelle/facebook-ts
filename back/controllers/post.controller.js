@@ -1,3 +1,4 @@
+/* eslint-disable no-undef */
 import postModel from "../models/post.model.js";
 import PostModel from "../models/post.model.js";
 import UserModel from "../models/user.model.js";

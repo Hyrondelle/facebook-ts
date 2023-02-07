@@ -12,6 +12,7 @@ import db from './config/db.js'
 const app = express();
 
 const corsOptions = {
+  // eslint-disable-next-line no-undef
   origin: process.env.CLIENT_URL,
   credentials: true,
   'allowedHeaders': ['sessionId', 'Content-Type'],
@@ -36,6 +37,8 @@ app.use('/api/user', userRoutes);
 app.use('/api/post', postRoutes);
 
 // server
+// eslint-disable-next-line no-undef
 app.listen(process.env.PORT, () => {
+  // eslint-disable-next-line no-undef
   console.log(`Listening on port ${process.env.PORT}`);
 })

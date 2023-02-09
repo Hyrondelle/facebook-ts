@@ -1,7 +1,7 @@
 import mongoose from "mongoose";
 import validator from 'validator';
 import bcrypt from 'bcrypt';
-const {isEmail} =validator
+const {isEmail} =validator;
 const userSchema = new mongoose.Schema(
   {
     pseudo: {

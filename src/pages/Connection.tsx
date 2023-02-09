@@ -11,7 +11,7 @@ const Connection = () => {
 
     const SubmitLogin = async() =>{
         const data = {email,password}
-        await axios.post('http://localhost:5173/api/user/login',data)
+        await axios.post('http://localhost:5000/api/user/login',data)
         .then((res)=>{
             console.log(res)
             navigate("/home")
@@ -22,7 +22,7 @@ const Connection = () => {
     const SubmitSignup = async() =>{
         if(password===verif){
             const data = {pseudo,email,password}
-            await axios.post('http://localhost:5173/api/user/register',data)
+            await axios.post('http://localhost:5000/api/user/register',{data})
             .then((res)=>{console.log(res)
             navigate("/home")})
             .catch((e)=>console.log(e))

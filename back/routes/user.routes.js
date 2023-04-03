@@ -1,10 +1,9 @@
-import express from 'express';
-import authController from "../controllers/auth.controller.js";
-import userController from "../controllers/user.controller.js";
-import uploadController from '../controllers/upload.controller.js';
-import multer from "multer";
+const router = require("express").Router();
+const authController = require("../controllers/auth.controller");
+const userController = require("../controllers/user.controller");
+const uploadController = require('../controllers/upload.controller');
+const multer = require("multer");
 const upload = multer();
-const router = express.Router();
 
 // auth
 router.post("/register", authController.signUp);
@@ -22,4 +21,4 @@ router.patch("/unfollow/:id", userController.unfollow);
 // upload
 router.post("/upload", upload.single("file"), uploadController.uploadProfil);
 
-export default router;
+module.exports = router;

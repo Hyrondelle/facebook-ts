@@ -1,8 +1,7 @@
-/* eslint-disable no-undef */
-import jwt from "jsonwebtoken";
-import UserModel from "../models/user.model.js";
+const jwt = require("jsonwebtoken");
+const UserModel = require("../models/user.model");
 
-const checkUser = (req, res, next) => {
+module.exports.checkUser = (req, res, next) => {
   const token = req.cookies.jwt;
   if (token) {
     jwt.verify(token, process.env.TOKEN_SECRET, async (err, decodedToken) => {
@@ -22,7 +21,7 @@ const checkUser = (req, res, next) => {
   }
 };
 
-const requireAuth = (req, res, next) => {
+module.exports.requireAuth = (req, res, next) => {
   const token = req.cookies.jwt;
   if (token) {
     jwt.verify(token, process.env.TOKEN_SECRET, async (err, decodedToken) => {
@@ -38,5 +37,3 @@ const requireAuth = (req, res, next) => {
     console.log('No token');
   }
 };
-
-export {checkUser,requireAuth}

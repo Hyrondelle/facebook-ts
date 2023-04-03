@@ -1,7 +1,6 @@
-/* eslint-disable no-undef */
-import UserModel from '../models/user.model.js';
-import jwt from 'jsonwebtoken';
-import { signUpErrors, signInErrors } from '../utils/errors.utils.js';
+const UserModel = require('../models/user.model');
+const jwt = require('jsonwebtoken');
+const { signUpErrors, signInErrors } = require('../utils/errors.utils');
 
 const maxAge = 3 * 24 * 60 * 60 * 1000;
 
@@ -11,7 +10,7 @@ const createToken = (id) => {
   })
 };
 
- const signUp = async (req, res) => {
+module.exports.signUp = async (req, res) => {
   const {pseudo, email, password} = req.body
 
   try {
@@ -24,7 +23,7 @@ const createToken = (id) => {
   }
 }
 
- const signIn = async (req, res) => {
+module.exports.signIn = async (req, res) => {
   const { email, password } = req.body
 
   try {
@@ -38,8 +37,7 @@ const createToken = (id) => {
   }
 }
 
- const logout = (req, res) => {
+module.exports.logout = (req, res) => {
   res.cookie('jwt', '', { maxAge: 1 });
   res.redirect('/');
 }
-export default{signUp,signIn,logout}

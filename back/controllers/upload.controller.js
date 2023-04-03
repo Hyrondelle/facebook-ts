@@ -1,11 +1,10 @@
-/* eslint-disable no-undef */
-import UserModel from "../models/user.model.js";
-import fs  from "fs";
-import { promisify } from "util";
-import { pipeline } from 'stream/promises'
-import { uploadErrors } from "../utils/errors.utils.js";
+const UserModel = require("../models/user.model");
+const fs = require("fs");
+const { promisify } = require("util");
+const pipeline = promisify(require("stream").pipeline);
+const { uploadErrors } = require("../utils/errors.utils");
 
-const uploadProfil = async (req, res) => {
+module.exports.uploadProfil = async (req, res) => {
   try {
     if (
       req.file.detectedMimeType != "image/jpg" &&
@@ -42,4 +41,3 @@ const uploadProfil = async (req, res) => {
     return res.status(500).send({ message: err });
   }
 };
-export default {uploadProfil}

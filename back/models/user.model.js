@@ -1,7 +1,7 @@
-import mongoose from "mongoose";
-const express = require("express")
+const mongoose = require('mongoose');
+const express = require("express");
+const bcrypt = require('bcrypt');
 
-import bcrypt from 'bcrypt';
 const userSchema = new mongoose.Schema(
   {
     pseudo: {
@@ -66,6 +66,5 @@ userSchema.statics.login = async function(email, password) {
   throw Error('incorrect email')
 };
 
-const UserModel = mongoose.model("user", userSchema);
 
-export default UserModel;
+module.exports = mongoose.model('user', userSchema);

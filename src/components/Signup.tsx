@@ -21,8 +21,7 @@ const Signup = () => {
         }
     }
     return (
-        <div>
-            <div className='container'>
+        
                 <div className='signup'>
                     <h1>Inscription</h1>
                     <form >  
@@ -37,8 +36,8 @@ const Signup = () => {
                         <input onClick={SubmitSignup} className='envoyer' type="button" value="Valider" />
                     </form>
                 </div>
-            </div>
-        </div>
+            
+        
        );
     };
 

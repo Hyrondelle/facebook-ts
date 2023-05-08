@@ -20,7 +20,7 @@ const Login = () => {
         .catch((e)=>console.log(e))
     }
     return (
-        <div>
+        
             <div className='login'>
                     <h1>connection</h1>
                     <form >
@@ -31,7 +31,7 @@ const Login = () => {
                         <input onClick={SubmitLogin} className='envoyer' type="button" value="Valider" />
                     </form>
                 </div>
-        </div>
+        
     );
 };
 

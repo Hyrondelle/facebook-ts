@@ -9,16 +9,34 @@
         height: 40%;
         border: black 1px solid;
     }
-    h1{
-        margin-bottom: 30px;
-        font-size: 2.5em;
-    }
     .envoyer{
         margin-top: 15px;
     }
-    .nodal-btn{
-        width: 50px;
-        height: 20px;
-        background-color: brown;
+    .nodal-btns{
+        display: flex;
+        height: 20%;
+        width: 100%;
+        font-weight: 900;
+        font-size: 1.5em;
+        margin-bottom: 8%;
+    }
+    .signup-btn{
+        width: 50%;
+        background-color: rgb(17, 93, 215);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        cursor: pointer;
+    }
+    .login-btn{
+        width: 50%;
+        background-color: rgb(17, 93, 215);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        cursor: pointer;
+    }
+    .border{
+        border-bottom: 2px black solid;
     }
 }

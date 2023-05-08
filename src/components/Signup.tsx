@@ -23,7 +23,7 @@ const Signup = () => {
     return (
         
                 <div className='signup'>
-                    <h1>Inscription</h1>
+                    
                     <form >  
                         <label htmlFor="name">Pseudo:</label>
                         <input onChange={(e)=>setPseudo(e.target.value)} type="text" name="name" id="name" />     

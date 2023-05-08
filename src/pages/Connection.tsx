@@ -4,15 +4,20 @@ import Login from '../components/Login';
 import Signup from '../components/Signup';
 
 const Connection = () => {
-    const [nodal,setNodal] = useState<boolean>(false);
+    const [signup,setSignup] = useState<boolean>(true);
     const NodalBtn = () =>{
-        setNodal(!nodal)
+        setSignup(!signup)
     }
     return (
         <div className='connection'>
             <div className="nodal">
-                <div className='nodal-btn' onClick={NodalBtn}></div>
-                {nodal?<Signup/>:<Login/>}
+                <div className="nodal-btns">
+                    <div className={signup?'signup-btn border':'signup-btn'} 
+                    onClick={NodalBtn}>Inscription</div>
+                    <div className={signup?'login-btn':'login-btn border'}
+                    onClick={NodalBtn}>Connection</div>
+                </div>
+                {signup?<Signup/>:<Login/>}
             </div>
         </div>
     );

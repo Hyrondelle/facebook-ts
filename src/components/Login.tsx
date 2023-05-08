@@ -22,7 +22,7 @@ const Login = () => {
     return (
         
             <div className='login'>
-                    <h1>connection</h1>
+                    
                     <form >
                         <label htmlFor="email">Email:</label>
                         <input onChange={(e)=>setEmail(e.target.value)} type="text" name="email" id="email" />

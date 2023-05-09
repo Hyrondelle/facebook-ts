@@ -7,7 +7,9 @@
     .nodal{
         width: 40%;
         height: 40%;
-        border: black 1px solid;
+        //border: rgba(26,26,26,0.84) 1px solid;
+        -webkit-box-shadow: 9px 6px 15px 4px rgba(26,26,26,0.84); 
+        box-shadow: 9px 6px 15px 4px rgba(26,26,26,0.84);
         border-radius: 10px;
     }
     .envoyer{
@@ -28,6 +30,7 @@
         align-items: center;
         justify-content: center;
         cursor: pointer;
+        border-top-left-radius: 10px;
     }
     .login-btn{
         width: 50%;
@@ -36,6 +39,7 @@
         align-items: center;
         justify-content: center;
         cursor: pointer;
+        border-top-right-radius: 10px;
     }
     .border{
         border-bottom: 2px black solid;

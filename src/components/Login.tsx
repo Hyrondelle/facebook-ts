@@ -15,7 +15,8 @@ const Login = () => {
         .then((res)=>{
             console.log(res)
             navigate("/home")
-            localStorage.setItem('userId',res.data.userId)
+            localStorage.setItem('userId',res.data.user)
+            
         })
         .catch((e)=>console.log(e))
     }

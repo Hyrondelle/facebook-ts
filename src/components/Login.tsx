@@ -24,6 +24,8 @@ const Login = () => {
             if(res.data.errors){
                 console.log(res);
                 emailError.innerHTML=res.data.errors.email;
+                passwordError.innerHTML=res.data.errors.password
+                ;
             }
             else{
                 console.log(res)
@@ -41,10 +43,10 @@ const Login = () => {
                     <form >
                         <label htmlFor="email">Email:</label>
                         <input onChange={(e)=>setEmail(e.target.value)} type="text" name="email" id="email" />
-                        <div className="emailError"></div>
+                        <div className="emailError red"></div>
                         <label htmlFor="mdp">Mot de passe:</label>
                         <input onChange={(e)=>setPassword(e.target.value)} type="text" name="mdp" id="mdp" />
-                        <div className="passwordError"></div>
+                        <div className="passwordError red"></div>
                         <input onClick={SubmitLogin} className='envoyer' type="button" value="Valider" />
                     </form>
                 </div>

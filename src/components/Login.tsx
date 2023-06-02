@@ -4,21 +4,35 @@ import { useNavigate } from 'react-router-dom';
 
 const Login = () => {
     const [email,setEmail] = useState<string>('');
-    const [pseudo,setPseudo] = useState<string>('');
     const [password,setPassword] = useState<string>('');
-    const [verif,setVerif] = useState<string>('');
     const navigate = useNavigate();
+    const emailError:HTMLElement =document.querySelector('.emailError') as HTMLElement;
+    const passwordError:HTMLElement =document.querySelector('.passwordError') as HTMLElement;
 
-    const SubmitLogin = async() =>{
+    const SubmitLogin = async(e:any) =>{
+        e.preventDefault();
         const data = {email,password}
-        await axios.post('http://localhost:5000/api/user/login',data)
-        .then((res)=>{
-            console.log(res)
-            navigate("/home")
-            localStorage.setItem('userId',res.data.user)
+        await axios({
+            method:'post',
+            url:`${import.meta.env.VITE_APP_URL_CLIENT}api/user/login`,
+            withCredentials:true,
+            data:{
+                email,
+                password
+            },})
+        .then((res:any)=>{
+            if(res.data.errors){
+                console.log(res);
+                emailError.innerHTML=res.data.errors.email;
+            }
+            else{
+                console.log(res)
+                navigate("/home")
+                localStorage.setItem('userId',res.data.user)
+            }
             
         })
-        .catch((e)=>console.log(e))
+        .catch((e:any)=>console.log(e))
     }
     return (
         
@@ -27,8 +41,10 @@ const Login = () => {
                     <form >
                         <label htmlFor="email">Email:</label>
                         <input onChange={(e)=>setEmail(e.target.value)} type="text" name="email" id="email" />
+                        <div className="emailError"></div>
                         <label htmlFor="mdp">Mot de passe:</label>
                         <input onChange={(e)=>setPassword(e.target.value)} type="text" name="mdp" id="mdp" />
+                        <div className="passwordError"></div>
                         <input onClick={SubmitLogin} className='envoyer' type="button" value="Valider" />
                     </form>
                 </div>

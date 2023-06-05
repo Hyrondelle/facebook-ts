@@ -12,10 +12,26 @@ const Signup = () => {
     const SubmitSignup = async() =>{
         if(password===verif){
             const data = {pseudo,email,password}
-            await axios.post('http://localhost:5000/api/user/register',data)
-            .then((res)=>{console.log(res)
+            await axios({
+                method:'post',
+                url:`${import.meta.env.VITE_APP_URL_CLIENT}api/user/register`,
+                withCredentials:true,
+                data:{
+                    pseudo,
+                    email,
+                    password
+                },})
+            .then((res:any)=>{
+                if(res.data.errors){
+                    console.log(res);
+                }
+                else{
+                    console.log(res)
+                    localStorage.setItem('userId',res.data.user)
+                }
+                
             })
-            .catch((e)=>console.log(e))
+            .catch((e:any)=>console.log(e))            
         }
         else{return console.log('verifiction password incorrecte');
         }

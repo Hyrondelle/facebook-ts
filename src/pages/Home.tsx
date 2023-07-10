@@ -20,7 +20,16 @@ const Home = () => {
         .catch((e)=>console.log(e))
     }
     useEffect(()=>{
-        axios.get('http://localhost:5000/api/post')
+        axios({
+            method:'get',
+            url:`${import.meta.env.VITE_APP_URL_CLIENT}api/post`,
+            withCredentials:true,
+            })
+            .then((res:any)=>{console.log(res)
+                setListPost(res.data) 
+             })
+        .catch((e:any)=>console.log(e))
+        axios.get('http://localhost:5000/api/post/')
         .then((res)=>{console.log(res)
            setListPost(res.data) 
         })

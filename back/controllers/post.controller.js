@@ -1,4 +1,3 @@
-const postModel = require("../models/post.model");
 const PostModel = require("../models/post.model");
 const UserModel = require("../models/user.model");
 const { uploadErrors } = require("../utils/errors.utils");
@@ -8,10 +7,16 @@ const { promisify } = require("util");
 const pipeline = promisify(require("stream").pipeline);
 
 module.exports.readPost = (req, res) => {
-  PostModel.find((err, docs) => {
-    if (!err) res.send(docs);
-    else console.log("Error to get data : " + err);
-  }).sort({ createdAt: -1 });
+  PostModel.find()
+  .then((docs)=>{
+    
+    res.send(docs);
+  })
+  .catch(err=> console.log("Error to get data : " + err))
+  //(err, docs) => {
+  //  if (!err) res.send(docs);
+  //  else console.log("Error to get data : " + err);
+  //}).sort({ createdAt: -1 });
 };
 
 module.exports.createPost = async (req, res) => {

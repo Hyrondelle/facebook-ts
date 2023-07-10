@@ -1,17 +1,19 @@
 import axios from 'axios';
 import React, { useState } from 'react';
-import { useNavigate } from 'react-router-dom';
 
 const Signup = () => {
-    const [email,setEmail] = useState<string>('');
     const [pseudo,setPseudo] = useState<string>('');
+    const [email,setEmail] = useState<string>('');
     const [password,setPassword] = useState<string>('');
     const [verif,setVerif] = useState<string>('');
-    const navigate = useNavigate();
+    const pseudoError:HTMLElement =document.querySelector('.emailError') as HTMLElement;
+    const emailError:HTMLElement =document.querySelector('.emailError') as HTMLElement;
+    const passwordError:HTMLElement =document.querySelector('.passwordError') as HTMLElement;
 
-    const SubmitSignup = async() =>{
+    const SubmitSignup = async(e:any) =>{
+        e.preventDefault();
         if(password===verif){
-            const data = {pseudo,email,password}
+            
             await axios({
                 method:'post',
                 url:`${import.meta.env.VITE_APP_URL_CLIENT}api/user/register`,
@@ -24,6 +26,9 @@ const Signup = () => {
             .then((res:any)=>{
                 if(res.data.errors){
                     console.log(res);
+                    pseudoError.innerHTML=res.data.errors.pseudo;
+                    emailError.innerHTML=res.data.errors.email;
+                    passwordError.innerHTML=res.data.errors.password;
                 }
                 else{
                     console.log(res)
@@ -41,14 +46,21 @@ const Signup = () => {
                 <div className='signup'>
                     
                     <form >  
-                        <label htmlFor="name">Pseudo:</label>
-                        <input onChange={(e)=>setPseudo(e.target.value)} type="text" name="name" id="name" />     
-                        <label htmlFor="email">Email:</label>
-                        <input onChange={(e)=>setEmail(e.target.value)} type="text" name="email" id="email" />
-                        <label htmlFor="mdp">Mot de passe:</label>
-                        <input onChange={(e)=>setPassword(e.target.value)} type="text" name="mdp" id="mdp" />
+                        <label htmlFor="pseudo">Pseudo:</label>
+                        <input onChange={(e)=>setPseudo(e.target.value)} type="text" name="pseudo" id="pseudo" /> 
+                        <div className="pseudoError red"></div>
+
+                        <label htmlFor="emailUp">Email:</label>
+                        <input onChange={(e)=>setEmail(e.target.value)} type="text" name="email" id="emailUp" />
+                        <div className="emailError red"></div>
+
+                        <label htmlFor="mdpUp">Mot de passe:</label>
+                        <input onChange={(e)=>setPassword(e.target.value)} type="text" name="mdp" id="mdpUp" />
+                        <div className="passwordError red"></div>
+
                         <label htmlFor="confirm">confirmer:</label>
                         <input onChange={(e)=>setVerif(e.target.value)} type="text" name="confirm" id="confirm" />
+                        
                         <input onClick={SubmitSignup} className='envoyer' type="button" value="Valider" />
                     </form>
                 </div>

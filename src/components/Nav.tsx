@@ -10,10 +10,12 @@ const Nav = () => {
     return (
         <nav>
           <Link to="/home">Home</Link>
+          {(uid?
           <div className="pseudo-exit">
             <h1>Bonjour {userData.pseudo}</h1>
             <ImExit/>
-          </div>
+          </div>:<></>
+          )}
         </nav>
     );
 };

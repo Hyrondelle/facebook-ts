@@ -5,9 +5,12 @@ import {UidContext} from './components/UidContext'
 import { useState,useEffect} from "react";
 import axios from "axios";
 import Nav from "./components/Nav";
+import { useDispatch } from "react-redux";
+import { getUser } from "./actions/user.actions";
 
 function App() {
   const [Uid,setUid] = useState('')
+  const dispatch:any = useDispatch()
 
   useEffect(()=>{
     const CheckToken = async ()=>{
@@ -23,6 +26,8 @@ function App() {
       .catch((err)=>console.log('no token'))
     }
     CheckToken();
+
+    if(Uid) dispatch(getUser(Uid))
   },[Uid])
 
   return (

@@ -26,16 +26,16 @@ module.exports.signUp = async (req, res) => {
 module.exports.signIn = async (req, res) => {
   const { email, password } = req.body
 
-  try {
-    const user = await UserModel.login(email, password);
-    const token = createToken(user._id);
-    //res.setHeader('Set-Cookie', 'isLoggedin=true; Domain=localhost:5173');
-    res.cookie('jwt', token, { httpOnly: true, maxAge});
-    res.status(200).json({ user: user._id})
-  } catch (err){
-    const errors = signInErrors(err);
-    res.status(200).json({ errors });
-  }
+  //try {
+  //  const user = await UserModel.login(email, password);
+  //  const token = createToken(user._id);
+  //  //res.setHeader('Set-Cookie', 'isLoggedin=true; Domain=localhost:5173');
+  //  res.cookie('jwt', token, { httpOnly: true, maxAge});
+  //  res.status(200).json({ user: user._id})
+  //} catch (err){
+  //  const errors = signInErrors(err);
+  //  res.status(200).json({ errors });
+  //}
 }
 
 module.exports.logout = (req, res) => {

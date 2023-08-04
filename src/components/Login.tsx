@@ -11,7 +11,7 @@ const Login = () => {
 
     const SubmitLogin = async(e:any) =>{
         e.preventDefault();
-        const data = {email,password}
+        
         await axios({
             method:'post',
             url:`${import.meta.env.VITE_APP_URL_CLIENT}api/user/login`,
@@ -24,8 +24,7 @@ const Login = () => {
             if(res.data.errors){
                 console.log(res);
                 emailError.innerHTML=res.data.errors.email;
-                passwordError.innerHTML=res.data.errors.password
-                ;
+                passwordError.innerHTML=res.data.errors.password;
             }
             else{
                 console.log(res)
@@ -34,7 +33,7 @@ const Login = () => {
             }
             
         })
-        .catch((e:any)=>console.log(e))
+        .catch((err:any)=>console.log(err))
     }
     return (
         
